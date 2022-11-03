@@ -4,8 +4,11 @@ import com.tdd.fintechapp.intf.AccountHolderIntf;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+
 @Getter
 @Setter
+@Entity(name = "consumer")
 public class Consumer extends AccountHolderIntf {
     private String firstName;
     private String lastName;
