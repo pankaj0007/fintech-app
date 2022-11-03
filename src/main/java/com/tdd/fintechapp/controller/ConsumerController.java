@@ -1,5 +1,6 @@
 package com.tdd.fintechapp.controller;
 
+import com.tdd.fintechapp.exception.RecordNotFoundException;
 import com.tdd.fintechapp.model.Consumer;
 import com.tdd.fintechapp.service.ConsumerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,13 @@ public class ConsumerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Consumer> getConsumer(@PathVariable("id") Integer id){
-        Consumer dbConsumer = consumerService.getConsumerById(id);
+        Consumer dbConsumer = null;
+        try {
+             dbConsumer = consumerService.getConsumerById(id);
+
+        }catch (RecordNotFoundException ex){
+            return  ResponseEntity.notFound().build();
+        }
         return  new ResponseEntity<>(dbConsumer, HttpStatus.OK);
     }
 
