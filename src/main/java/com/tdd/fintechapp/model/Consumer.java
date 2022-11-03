@@ -2,12 +2,14 @@ package com.tdd.fintechapp.model;
 
 import com.tdd.fintechapp.intf.AccountHolderIntf;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity(name = "consumer")
 public class Consumer extends AccountHolderIntf {
     private String firstName;
@@ -24,4 +26,5 @@ public class Consumer extends AccountHolderIntf {
         this.lastName = lastName;
         this.taxId = taxId;
     }
+
 }
